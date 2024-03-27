@@ -1,5 +1,6 @@
 import { Manifest, Trader } from "@hxronetwork/dexterity-ts";
 import { PublicKey } from "@solana/web3.js";
+// import { accountPositioningHandler } from "./accountPositioningHandler";
 import { newAcccountSubscriptionHandler } from "./newAccountHandler";
 
 export const handleNewSubscription = async (
@@ -17,7 +18,9 @@ export const handleNewSubscription = async (
   const copiedTrader = new Trader(manifest, new PublicKey(newTrg), true);
   AppState.set("copiedTrader", copiedTrader);
 
-  await newAcccountSubscriptionHandler(newTrg)
+  await newAcccountSubscriptionHandler(newTrg);
+
+  // await accountPositioningHandler(AppState, trader, copiedTrader);
 
   return new Response(
     JSON.stringify({

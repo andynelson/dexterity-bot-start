@@ -1,5 +1,6 @@
 const HeliusApiKey = process.env.HELIUS_API_KEY;
 const WebHookId = process.env.WEBHOOK_ID;
+const TRADES_WEBHOOK_URL = process.env.TRADES_WEBHOOK_URL;
 
 export const newAcccountSubscriptionHandler = async (newTrg: string) => {
   try {
@@ -10,7 +11,7 @@ export const newAcccountSubscriptionHandler = async (newTrg: string) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          webhookURL: "https://trades-webhook-url.com/webhook",
+          webhookURL: TRADES_WEBHOOK_URL,
           transactionTypes: ["Any"],
           accountAddresses: [newTrg],
           webhookType: "rawDevnet",
